@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>BMI Calculator</title>
+    <title>CREDIT CARD VALIDATOR</title>
 </head>
 <body>
-    <h1>BMI Calculator</h1>
-    <form method="post">
-        Weight (kg): <input type="number" name="weight" step="0.1" required>
-        Height (m): <input type="number" name="height" step="0.01" required>
-        <input type="submit" value="Calculate">
+    </head>
+<body>
+    <h1>CREDIT CARD VALIDATOR</h1>
+    <form onsubmit="handleSubmit(event)">
+        <label for="card_number">Enter Credit Card Number:</label>
+        <input type="text" id="card_number" name="card_number" required>
+        <button type="submit">Validate</button>
     </form>
-    {% if bmi is not none %}
-        <p>Your BMI is: {{ bmi }}</p>
-    {% endif %}
+
+    <div id="validation_result"></div>
+
+    <h1>Alert Popup Example</h1>
+    <button onclick="showAlert()">Show Alert</button>
 </body>
 </html>
-
