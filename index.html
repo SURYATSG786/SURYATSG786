@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BMI Calculator</title>
+</head>
+<body>
+    <h1>BMI Calculator</h1>
+    <form method="post">
+        Weight (kg): <input type="number" name="weight" step="0.1" required>
+        Height (m): <input type="number" name="height" step="0.01" required>
+        <input type="submit" value="Calculate">
+    </form>
+    {% if bmi is not none %}
+        <p>Your BMI is: {{ bmi }}</p>
+    {% endif %}
+</body>
+</html>
+
