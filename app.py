@@ -1,23 +1,23 @@
 from flask import Flask, render_template, request
+import random
+import string
 
 app = Flask(__name__)
 
-def calculate_emi(principal, rate, term):
-    monthly_rate = rate / 12 / 100
-    num_payments = term * 12
-    emi = principal * monthly_rate * (1 + monthly_rate) ** num_payments / ((1 + monthly_rate) ** num_payments - 1)
-    return emi
+def generate_password(length):
+    characters = string.ascii_letters + string.digits 
+    return ''.join(random.choice(characters) for i in range(length))
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    emi = None
+    password = ''
     if request.method == 'POST':
-        principal = float(request.form['principal'])
-        rate = float(request.form['rate'])
-        term = int(request.form['term'])
-        emi = calculate_emi(principal, rate, term)
-    return render_template('index.html', emi=emi)
+        try:
+            length = int(request.form.get('length',))
+            password = generate_password(length)
+        except ValueError:
+            password = 'Invalid length'
+    return render_template('index.html', password=password)
 
 if __name__ == '__main__':
     app.run(debug=True)
-
