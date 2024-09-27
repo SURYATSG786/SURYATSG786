@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>CRICKET STRIKE RATE CALCULATOR</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Bill Calculator</title>
 </head>
 <body>
-    <h1>𝘾𝙍𝙄𝘾𝙆𝙀𝙏 𝙎𝙏𝙍𝙄𝙆𝙀 𝙍𝘼𝙏𝙀 𝘾𝘼𝙇𝘾𝙐𝙇𝘼𝙏𝙊𝙍</h1>
+    <h1>Electric Bill Calculator</h1>
     <form method="post">
-        <label for="runs_scored">𝙍𝙐𝙉𝙎 𝙎𝘾𝙊𝙍𝙀𝘿
-:</label>
-        <input type="number" id="runs_scored" name="runs_scored" step="any" required>
-        <br><br>
-        <label for="balls_faced">𝘉𝘈𝘓𝘓𝘚 𝘍𝘈𝘊𝘌𝘋
-(nos):</label>
-        <input type="number" id="rate" name="balls_faced" step="any" required>
-        <br><br>
-        <button type="submit">Calculate STRIKE RATE</button>
+        <label for="units">Units:</label>
+        <input type="number" id="units" name="units" required>
+        <input type="submit" value="Calculate">
     </form>
-
-{% if strike_rate is not none %}
-            <div class="result">
-                <h2>Strike Rate: {{ strike_rate|round(2) }}</h2>
-            </div>
-        {% endif %}
-    </div>
+    {% if bill_amount is not none %}
+    THE EB BILL CALCULATED IS <p>₹{{ bill_amount }}</p>
+    {% endif %}
 </body>
 </html>
+
