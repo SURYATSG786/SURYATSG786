@@ -1,0 +1,57 @@
+<svg width="1200" height="320" viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#0a0f1a"/>
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5eead4"/>
+      <stop offset="50%" stop-color="#9b5de5"/>
+      <stop offset="100%" stop-color="#f15bb5"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00f5d4" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#00f5d4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9b5de5" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#9b5de5" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="320" fill="url(#bgGrad)"/>
+  <circle cx="150" cy="60" r="180" fill="url(#glow1)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="1050" cy="270" r="200" fill="url(#glow2)">
+    <animate attributeName="opacity" values="1;0.5;1" dur="5s" repeatCount="indefinite"/>
+  </circle>
+
+  <g font-family="Fira Code, monospace" fill="#233047" font-size="24" opacity="0.55">
+    <text x="55" y="280">&lt;/&gt;</text>
+    <text x="1090" y="55">{ }</text>
+    <text x="1000" y="290">01</text>
+    <text x="40" y="50">##</text>
+    <text x="1120" y="180">$_</text>
+  </g>
+
+  <text x="600" y="140" text-anchor="middle" font-family="Orbitron, sans-serif" font-size="66" font-weight="800" fill="url(#titleGrad)" filter="url(#softGlow)">
+    SURYA T
+  </text>
+  <text x="600" y="182" text-anchor="middle" font-family="Fira Code, monospace" font-size="21" fill="#8b98ac" letter-spacing="2.5">
+    BLOCKCHAIN &#8226; AI &#8226; BACKEND DEVELOPER
+  </text>
+
+  <line x1="360" y1="215" x2="840" y2="215" stroke="#5eead4" stroke-width="1.5" opacity="0.6"/>
+
+  <text x="600" y="255" text-anchor="middle" font-family="Fira Code, monospace" font-size="16" fill="#5eead4" opacity="0.9">
+    building trust systems, literacy tools &amp; AI products that ship
+  </text>
+</svg>
