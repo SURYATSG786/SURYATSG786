@@ -1,57 +1,125 @@
-<svg width="1200" height="320" viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="360" viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0d1117"/>
-      <stop offset="100%" stop-color="#0a0f1a"/>
+      <stop offset="0%" stop-color="#05070d"/>
+      <stop offset="55%" stop-color="#0a0f1a"/>
+      <stop offset="100%" stop-color="#05070d"/>
     </linearGradient>
+
     <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#5eead4"/>
-      <stop offset="50%" stop-color="#9b5de5"/>
+      <stop offset="45%" stop-color="#9b5de5"/>
       <stop offset="100%" stop-color="#f15bb5"/>
     </linearGradient>
-    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#00f5d4" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="#00f5d4" stop-opacity="0"/>
+
+    <radialGradient id="spotlight" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="45%" stop-color="#5eead4" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#5eead4" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#9b5de5" stop-opacity="0.30"/>
-      <stop offset="100%" stop-color="#9b5de5" stop-opacity="0"/>
+
+    <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
+      <stop offset="60%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.65"/>
     </radialGradient>
-    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
+
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5eead4" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#5eead4" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f15bb5" stop-opacity="0"/>
+    </linearGradient>
+
+    <pattern id="grid" width="46" height="46" patternUnits="userSpaceOnUse">
+      <path d="M 46 0 L 0 0 0 46" fill="none" stroke="#1a2333" stroke-width="1"/>
+    </pattern>
   </defs>
 
-  <rect width="1200" height="320" fill="url(#bgGrad)"/>
-  <circle cx="150" cy="60" r="180" fill="url(#glow1)">
-    <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="1050" cy="270" r="200" fill="url(#glow2)">
-    <animate attributeName="opacity" values="1;0.5;1" dur="5s" repeatCount="indefinite"/>
-  </circle>
+  <!-- background -->
+  <rect width="1200" height="360" fill="url(#bgGrad)"/>
+  <rect width="1200" height="360" fill="url(#grid)" opacity="0.5">
+    <animateTransform attributeName="transform" type="translate" from="0,0" to="46,46" dur="6s" repeatCount="indefinite"/>
+  </rect>
 
-  <g font-family="Fira Code, monospace" fill="#233047" font-size="24" opacity="0.55">
-    <text x="55" y="280">&lt;/&gt;</text>
-    <text x="1090" y="55">{ }</text>
-    <text x="1000" y="290">01</text>
-    <text x="40" y="50">##</text>
-    <text x="1120" y="180">$_</text>
+  <!-- sweeping spotlight flare -->
+  <ellipse cx="-200" cy="180" rx="420" ry="260" fill="url(#spotlight)">
+    <animate attributeName="cx" values="-200;1400;1400" keyTimes="0;0.55;1" dur="5.5s" begin="0s" fill="freeze"/>
+  </ellipse>
+
+  <!-- drifting embers -->
+  <g fill="#5eead4" opacity="0.75">
+    <circle cx="120" cy="320" r="2.2">
+      <animate attributeName="cy" values="320;40" dur="7s" begin="1s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.9;0" dur="7s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="260" cy="340" r="1.6" fill="#9b5de5">
+      <animate attributeName="cy" values="340;30" dur="8.5s" begin="2.3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.8;0" dur="8.5s" begin="2.3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="950" cy="330" r="2" fill="#f15bb5">
+      <animate attributeName="cy" values="330;20" dur="6.5s" begin="0.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.9;0" dur="6.5s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1080" cy="350" r="1.8">
+      <animate attributeName="cy" values="350;60" dur="7.8s" begin="1.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.85;0" dur="7.8s" begin="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="600" cy="345" r="1.5" fill="#9b5de5">
+      <animate attributeName="cy" values="345;70" dur="9s" begin="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.7;0" dur="9s" begin="3s" repeatCount="indefinite"/>
+    </circle>
   </g>
 
-  <text x="600" y="140" text-anchor="middle" font-family="Orbitron, sans-serif" font-size="66" font-weight="800" fill="url(#titleGrad)" filter="url(#softGlow)">
-    SURYA T
-  </text>
-  <text x="600" y="182" text-anchor="middle" font-family="Fira Code, monospace" font-size="21" fill="#8b98ac" letter-spacing="2.5">
+  <!-- TITLE: cinematic zoom + fade reveal -->
+  <g filter="url(#glow)">
+    <text x="600" y="160" text-anchor="middle" font-family="Orbitron, sans-serif" font-size="72" font-weight="800"
+          fill="url(#titleGrad)" opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.12;0.42;1" dur="3s" begin="0s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="scale" values="1.6 1.6;1.6 1.6;1 1;1 1"
+                         keyTimes="0;0.12;0.42;1" dur="3s" begin="0s" fill="freeze"
+                         additive="sum"/>
+      <animateTransform attributeName="transform" type="translate" values="-240 -104;-240 -104;0 0;0 0"
+                         keyTimes="0;0.12;0.42;1" dur="3s" begin="0s" fill="freeze"
+                         additive="sum"/>
+      SURYA T
+    </text>
+  </g>
+
+  <!-- wipe-in underline, wipes right after title lands -->
+  <rect x="360" y="196" width="0" height="3" fill="url(#lineGrad)">
+    <animate attributeName="width" values="0;480" keyTimes="0;1" dur="0.8s" begin="1.7s" fill="freeze"/>
+    <animate attributeName="x" values="600;360" keyTimes="0;1" dur="0.8s" begin="1.7s" fill="freeze"/>
+  </rect>
+
+  <!-- SUBTITLE: rises + fades in after title -->
+  <text x="600" y="234" text-anchor="middle" font-family="Fira Code, monospace" font-size="21"
+        fill="#8b98ac" letter-spacing="3" opacity="0">
+    <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.55;1" dur="3.2s" begin="0s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="translate" values="0 26;0 26;0 0" keyTimes="0;0.55;1"
+                       dur="3.2s" begin="0s" fill="freeze"/>
     BLOCKCHAIN &#8226; AI &#8226; BACKEND DEVELOPER
   </text>
 
-  <line x1="360" y1="215" x2="840" y2="215" stroke="#5eead4" stroke-width="1.5" opacity="0.6"/>
-
-  <text x="600" y="255" text-anchor="middle" font-family="Fira Code, monospace" font-size="16" fill="#5eead4" opacity="0.9">
+  <!-- TAGLINE: last to arrive, gentle typewriter-style fade -->
+  <text x="600" y="284" text-anchor="middle" font-family="Fira Code, monospace" font-size="16"
+        fill="#5eead4" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.95" keyTimes="0;0.75;1" dur="4s" begin="0s" fill="freeze"/>
     building trust systems, literacy tools &amp; AI products that ship
   </text>
+
+  <!-- persistent slow pulse on title glow after intro settles -->
+  <text x="600" y="160" text-anchor="middle" font-family="Orbitron, sans-serif" font-size="72" font-weight="800"
+        fill="url(#titleGrad)" opacity="0" filter="url(#glow)">
+    <animate attributeName="opacity" values="0;0;0.25;0.05;0.25" keyTimes="0;0.42;0.6;0.8;1" dur="6s" begin="1.5s" repeatCount="indefinite"/>
+    SURYA T
+  </text>
+
+  <rect width="1200" height="360" fill="url(#vignette)"/>
 </svg>
